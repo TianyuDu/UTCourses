@@ -7,7 +7,7 @@ import time
 
 class bot():
     def __init__(self):
-        self.driver = webdriver.Chrome("/Users/tianyudu/Downloads/ut_courses/chromedriver")
+        self.driver = webdriver.Chrome("./chromedriver")
         self.driver.get("https://timetable.iit.artsci.utoronto.ca/")
 
     def close(self):
@@ -48,7 +48,7 @@ class bot():
         )
         return course_info_df
 
-    def batch_download(self, save_dir: str) -> None:
+    def batch_download(self, code_lst: list, save_dir: str) -> None:
         department_lst = [
             x.text
             for x in self.driver.find_elements_by_class_name("option")
@@ -62,8 +62,6 @@ class bot():
             if x.startswith("(") and x.endswith(")")
         ]
 
-        # code_lst = ["CSC", "MAT", "ECO", "STA"]
-        code_lst = ["MAT"]
 
         all_courses = []
         for x in code_lst:
@@ -77,5 +75,6 @@ class bot():
 
 if __name__ == "__main__":
     b = bot()
-    b.batch_download(save_dir="./MAT.csv")
+    code_lst = ["MAT"]
+    b.batch_download(code_lst, save_dir="./results.csv")
     b.close()
