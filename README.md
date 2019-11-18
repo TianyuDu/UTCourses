@@ -5,7 +5,7 @@ Web scraping and retrieve course information from terminal
 The entire implementation is in `./core.sh`. The only dependency is `jq` package, which should be pre-installed on most Mac and Linux machines.
 
 ### Example
-1. Copy the `ut()` function in it to `~/.bash_profile` (or other locations your shell has access to).
+1. Copy the `ut()` function in `./core.sh` to `~/.bash_profile` (or other locations your shell has access to).
 2. Restart shell.
 3. Run `ut eco499` in terminal. The query is not case-sensitive, executing `ut ECO499` or `ut eCo499` should give the same output.
 4. Sample output:
